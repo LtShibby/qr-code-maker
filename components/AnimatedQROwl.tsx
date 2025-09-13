@@ -23,13 +23,14 @@ export default function AnimatedQROwl({
     const minDistance = moduleSize + padding;
     const centerRadius = size / 4; // Keep modules away from center owl area
     
-    const randomModules = [];
+    const randomModules: Array<{ x: number; y: number; delay: number; duration: number }> = [];
     const maxAttempts = 1000; // Prevent infinite loops
     
     for (let i = 0; i < 40; i++) {
       let attempts = 0;
       let validPosition = false;
-      let x, y;
+      let x: number = 0;
+      let y: number = 0;
       
       while (!validPosition && attempts < maxAttempts) {
         x = Math.random() * (size - moduleSize);
