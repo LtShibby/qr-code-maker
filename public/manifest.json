@@ -1,0 +1,23 @@
+{
+  "name": "WizeQR - Free Custom QR Code Generator",
+  "short_name": "WizeQR",
+  "description": "Generate and customize QR codes locally in your browser. Free, private, no watermarks.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#3B82F6",
+  "icons": [
+    {
+      "src": "/WizeQrLogo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/WizeQrLogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
