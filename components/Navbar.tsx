@@ -91,6 +91,15 @@ export default function Navbar() {
           {links.map(l => (
             <NavLink key={l.href} href={l.href} label={l.label} isActive={pathname === l.href} />
           ))}
+          <motion.div className="ml-3" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href="/generate"
+              className="px-4 py-2 rounded-lg font-medium text-white shadow-lg
+                         bg-gradient-to-r from-brand-blue to-brand-blue2 hover:from-brand-blue/90 hover:to-brand-blue2/90"
+            >
+              Generate
+            </Link>
+          </motion.div>
         </nav>
 
         <button
@@ -111,7 +120,7 @@ export default function Navbar() {
 
       <motion.div
         ref={menuRef}
-        className="md:hidden border-t border-brand-border bg-brand-panel/80 backdrop-blur-xl overflow-hidden"
+        className="md:hidden border-t border-brand-border bg-brand-panel overflow-hidden"
         initial={{ height: 0 }} animate={{ height: open ? "auto" : 0 }}
         transition={{ duration: 0.25, ease: "easeInOut" }} aria-hidden={!open}
       >
@@ -119,6 +128,16 @@ export default function Navbar() {
           {links.map(l => (
             <NavLink key={l.href} href={l.href} label={l.label} isActive={pathname === l.href} onClick={() => setOpen(false)} />
           ))}
+          <div className="pt-2">
+            <Link
+              href="/generate"
+              className="block w-full px-4 py-3 text-center text-white rounded-lg shadow-lg
+                         bg-gradient-to-r from-brand-blue to-brand-blue2"
+              onClick={() => setOpen(false)}
+            >
+              Generate
+            </Link>
+          </div>
         </div>
       </motion.div>
     </motion.header>
