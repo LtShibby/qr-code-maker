@@ -95,7 +95,19 @@ export const useQRCode = () => {
       if (format === 'png') {
         const canvas = await qrCode.getRawData('png')
         if (canvas) {
-          const url = URL.createObjectURL(canvas)
+          let arrayBuffer: ArrayBuffer
+          if (canvas instanceof Blob) {
+            arrayBuffer = await canvas.arrayBuffer()
+          } else {
+            // Handle Buffer case - ensure we get a proper ArrayBuffer
+            const buffer = canvas.buffer.slice(canvas.byteOffset, canvas.byteOffset + canvas.byteLength)
+            arrayBuffer = buffer instanceof ArrayBuffer ? buffer : new ArrayBuffer(buffer.byteLength)
+            if (!(buffer instanceof ArrayBuffer)) {
+              new Uint8Array(arrayBuffer).set(new Uint8Array(buffer))
+            }
+          }
+          const blob = new Blob([arrayBuffer], { type: 'image/png' })
+          const url = URL.createObjectURL(blob)
           const link = document.createElement('a')
           link.href = url
           link.download = `qr-code-${Date.now()}.png`
@@ -107,7 +119,19 @@ export const useQRCode = () => {
       } else {
         const svg = await qrCode.getRawData('svg')
         if (svg) {
-          const url = URL.createObjectURL(svg)
+          let arrayBuffer: ArrayBuffer
+          if (svg instanceof Blob) {
+            arrayBuffer = await svg.arrayBuffer()
+          } else {
+            // Handle Buffer case - ensure we get a proper ArrayBuffer
+            const buffer = svg.buffer.slice(svg.byteOffset, svg.byteOffset + svg.byteLength)
+            arrayBuffer = buffer instanceof ArrayBuffer ? buffer : new ArrayBuffer(buffer.byteLength)
+            if (!(buffer instanceof ArrayBuffer)) {
+              new Uint8Array(arrayBuffer).set(new Uint8Array(buffer))
+            }
+          }
+          const blob = new Blob([arrayBuffer], { type: 'image/svg+xml' })
+          const url = URL.createObjectURL(blob)
           const link = document.createElement('a')
           link.href = url
           link.download = `qr-code-${Date.now()}.svg`

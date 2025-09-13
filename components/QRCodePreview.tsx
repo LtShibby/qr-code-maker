@@ -2,17 +2,11 @@
 
 import { useEffect, useRef } from 'react'
 import QRCodeStyling from 'qr-code-styling'
+import { QRCodeSettings } from '@/hooks/useQRCode'
 
 interface QRCodePreviewProps {
   qrCode: QRCodeStyling | null
-  settings: {
-    data: string
-    foregroundColor: string
-    backgroundColor: string
-    errorCorrectionLevel: 'L' | 'M' | 'Q' | 'H'
-    size: number
-    logo?: string
-  }
+  settings: QRCodeSettings
 }
 
 export default function QRCodePreview({ qrCode, settings }: QRCodePreviewProps) {
