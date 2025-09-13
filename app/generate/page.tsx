@@ -18,12 +18,6 @@ export default function GeneratePage() {
           <p className="text-brand-sub text-lg mb-6 max-w-2xl mx-auto">
             Generate and customize beautiful QR codes locally in your browser. Free, private, no watermarks.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 text-sm">
-            <span className="px-4 py-2 bg-brand-blue/20 text-brand-blue rounded-full border border-brand-blue/30">6 Dot Styles</span>
-            <span className="px-4 py-2 bg-brand-blue/20 text-brand-blue rounded-full border border-brand-blue/30">3 Corner Types</span>
-            <span className="px-4 py-2 bg-brand-blue/20 text-brand-blue rounded-full border border-brand-blue/30">Logo Support</span>
-            <span className="px-4 py-2 bg-brand-blue/20 text-brand-blue rounded-full border border-brand-blue/30">PNG & SVG Export</span>
-          </div>
         </div>
 
         {/* Main Content */}
