@@ -9,16 +9,65 @@
 }
 
 html, body {
-  background: #0A0A0A;
+  background: 
+    /* QR-style grid overlay */
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 32px),
+    /* Animated diagonal gradient */
+    linear-gradient(135deg, #0A0A0A, #0E1F33, #0A0A0A);
+  background-size: 32px 32px, 32px 32px, 400% 400%;
+  background-position: 0 0, 0 0, 0% 0%;
+  animation: gradientShift 20s ease-in-out infinite;
   color: #E6E6E6;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0 0, 0 0, 0% 0%;
+  }
+  50% {
+    background-position: 0 0, 0 0, 100% 100%;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  html, body {
+    /* Reduce animation complexity on mobile for better performance */
+    animation: gradientShift 30s ease-in-out infinite;
+    /* Remove fixed attachment for mobile compatibility */
+    background-attachment: scroll;
+  }
+  
+  .body-bg {
+    /* Remove fixed attachment for mobile compatibility */
+    background-attachment: scroll;
+    /* Slightly reduce grid size for better mobile performance */
+    background-size: 24px 24px, 24px 24px, 300% 300%;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  html, body, .body-bg {
+    animation: none;
+    background-size: 32px 32px, 32px 32px, 100% 100%;
+  }
 }
 
 .body-bg {
-  background:
-    var(--grain),
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 2px, transparent 3px),
-    #0A0A0A;
+  background: 
+    /* QR-style grid overlay */
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 32px),
+    /* Animated diagonal gradient */
+    linear-gradient(135deg, #0A0A0A, #0E1F33, #0A0A0A);
+  background-size: 32px 32px, 32px 32px, 400% 400%;
+  background-position: 0 0, 0 0, 0% 0%;
+  animation: gradientShift 20s ease-in-out infinite;
   background-attachment: fixed;
+  min-height: 100vh;
 }
 
 @layer utilities {
